@@ -2,11 +2,11 @@ import { nanoid } from 'nanoid';
 import { ContactsForm } from './PhonebookForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
-import { getContactsSelector } from 'store/selectors';
+import { selectContacts } from 'store/selectors';
 import { addContactAction } from 'store/contactsSlice';
 
 const PhonebookForm = () => {
-  const contacts = useSelector(getContactsSelector);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const createContact = e => {
