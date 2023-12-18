@@ -1,28 +1,27 @@
-import { nanoid } from 'nanoid';
 import { ContactsForm } from './PhonebookForm.styled';
 import { useDispatch, useSelector } from 'react-redux';
 import Notiflix from 'notiflix';
 import { selectContacts } from 'store/selectors';
-import { addContactAction } from 'store/contactsSlice';
+import { addContactThunk } from 'store/contactsSlice';
 
 const PhonebookForm = () => {
-  const contacts = useSelector(selectContacts);
+  const { contacts } = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const createContact = e => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
-    const number = form.number.value;
+    const phone = form.number.value;
 
     const isNew = contacts.every(el => {
       if (el.name.toLowerCase() === name.toLowerCase()) return false;
-      if (el.number === number) return false;
+      if (el.phone === phone) return false;
       return true;
     });
 
-    const isNumber = Number(number);
-    if (!isNumber) return Notiflix.Notify.warning(`${number} is not a number!`);
+    const isNumber = Number(phone);
+    if (!isNumber) return Notiflix.Notify.warning(`${phone} is not a number!`);
 
     form.reset();
 
@@ -31,10 +30,10 @@ const PhonebookForm = () => {
 
     const newContact = {
       name,
-      number,
-      id: nanoid(),
+      phone,
     };
-    dispatch(addContactAction(newContact));
+
+    dispatch(addContactThunk(newContact));
   };
 
   return (

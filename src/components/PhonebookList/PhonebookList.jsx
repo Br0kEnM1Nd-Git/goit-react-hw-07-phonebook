@@ -1,16 +1,28 @@
 import { useSelector } from 'react-redux';
 import { ContactsList } from './PhonebookList.styled';
 import ContactsItem from './ContactsItem';
-import { selectVisibleContacts } from 'store/selectors';
+import {
+  selectErrorContacts,
+  selectIsLoadingContacts,
+  selectVisibleContacts,
+} from 'store/selectors';
 
 export const PhonebookList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
+  const isLoading = useSelector(selectIsLoadingContacts);
+  const error = useSelector(selectErrorContacts);
 
   return (
     <ContactsList>
-      {visibleContacts.map(contact => {
-        return <ContactsItem contact={contact} key={contact.id} />;
-      })}
+      {isLoading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        visibleContacts.map(contact => {
+          return <ContactsItem contact={contact} key={contact.id} />;
+        })
+      )}
     </ContactsList>
   );
 };
