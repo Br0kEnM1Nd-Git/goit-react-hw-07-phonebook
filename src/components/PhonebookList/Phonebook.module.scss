@@ -1,7 +1,4 @@
-import { Ul } from 'components/Helpers/Components.styled';
-import styled from 'styled-components';
-
-const FilterForm = styled.div`
+.filterForm {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -22,9 +19,9 @@ const FilterForm = styled.div`
       background-color: rgba(0, 0, 155, 0.1);
     }
   }
-`;
+}
 
-const ContactsList = styled(Ul)`
+.contactsList {
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -50,6 +47,4 @@ const ContactsList = styled(Ul)`
       cursor: pointer;
     }
   }
-`;
-
-export { FilterForm, ContactsList };
+}

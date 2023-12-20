@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
-import { FilterForm } from './PhonebookList.styled';
 import debounce from 'lodash.debounce';
 import { changeFilterAction } from 'store/filterSlice';
+import styles from './Phonebook.module.scss'
 
 const PhonebookFilter = () => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ const PhonebookFilter = () => {
   };
 
   return (
-    <FilterForm>
+    <form className={styles.filterForm}>
       <label htmlFor="filter">Find contacts:</label>
       <input
         type="text"
@@ -21,7 +21,7 @@ const PhonebookFilter = () => {
         onChange={debounce(e => handleChange(e), 200)}
         autoComplete="off"
       />
-    </FilterForm>
+    </form>
   );
 };
 

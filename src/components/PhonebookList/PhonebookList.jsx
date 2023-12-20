@@ -1,11 +1,11 @@
 import { useSelector } from 'react-redux';
-import { ContactsList } from './PhonebookList.styled';
 import ContactsItem from './ContactsItem';
 import {
   selectErrorContacts,
   selectIsLoadingContacts,
   selectVisibleContacts,
 } from 'store/selectors';
+import styles from './Phonebook.module.scss';
 
 export const PhonebookList = () => {
   const visibleContacts = useSelector(selectVisibleContacts);
@@ -13,7 +13,7 @@ export const PhonebookList = () => {
   const error = useSelector(selectErrorContacts);
 
   return (
-    <ContactsList>
+    <div className={styles.contactsList}>
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
@@ -23,6 +23,6 @@ export const PhonebookList = () => {
           return <ContactsItem contact={contact} key={contact.id} />;
         })
       )}
-    </ContactsList>
+    </div>
   );
 };

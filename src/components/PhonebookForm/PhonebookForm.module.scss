@@ -1,6 +1,4 @@
-import styled from 'styled-components';
-
-const ContactsForm = styled.form`
+.contactsForm {
   width: 400px;
   border: 0.5px solid grey;
   padding: 12px 16px;
@@ -35,6 +33,4 @@ const ContactsForm = styled.form`
       cursor: pointer;
     }
   }
-`;
-
-export { ContactsForm };
+}
