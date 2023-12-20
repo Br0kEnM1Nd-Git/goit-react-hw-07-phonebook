@@ -38,7 +38,6 @@ const PhonebookForm = () => {
 
   return (
     <form className={styles.contactsForm} onSubmit={createContact}>
-      {' '}
       <label htmlFor="name">Name</label>
       <input type="text" name="name" id="name" required autoComplete="name" />
       <label htmlFor="number">Number</label>
